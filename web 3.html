@@ -1,0 +1,1126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Success Overseas - Your Gateway to Global Education</title>
+    <!-- Load Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Lucide Icons (UMD bundle) -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    
+    <!-- NEW: Load Poppins font from Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* NEW: Define Poppins as the main font */
+        :root {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* NEW: Updated Color Palette */
+        .bg-primary-teal { background-color: #046d80; } /* Replaces Royal Blue */
+        .text-primary-teal { color: #0F766E; }
+        .border-primary-teal { border-color: #05b9aa; }
+        
+        .bg-gold-accent { background-color: #FBBF24; }
+        .text-gold-accent { color: #FBBF24; }
+        .border-gold-accent { border-color: #FBBF24; }
+
+        /* Waving Flag Animation (Unchanged) */
+        .waving-flag {
+            position: relative;
+            transform-origin: top;
+            animation: wave 4s infinite ease-in-out;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+
+        @keyframes wave {
+            0%, 100% { transform: rotateZ(0deg) rotateX(0deg); }
+            25% { transform: rotateZ(1deg) rotateX(1deg); }
+            75% { transform: rotateZ(-1deg) rotateX(-1deg); }
+        }
+        
+        /* Airplane Animation (Unchanged) */
+        .airplane-animation {
+            animation: fly-across 15s linear infinite;
+        }
+
+        @keyframes fly-across {
+            0% { transform: translateX(-100%); opacity: 0; }
+            5% { transform: translateX(-90%); opacity: 1; }
+            95% { transform: translateX(90%); opacity: 1; }
+            100% { transform: translateX(100%); opacity: 0; }
+        }
+        
+        /* Scroll Reveal Animation (Unchanged) */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .scroll-reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Custom Scrollbar (NEW: Themed to match) */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #0F766E; /* Dark Teal */
+            border-radius: 4px;
+        }
+
+        /* NEW: Updated Apply Page Background */
+        #apply-page-bg {
+            background-image: linear-gradient(rgba(15, 118, 110, 0.8), rgba(15, 118, 110, 0.8)), url('https://placehold.co/1200x800/0F766E/FFFFFF?text=Boarding+Pass+Background');
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col bg-gray-50 text-gray-700">
+
+    <!-- WhatsApp Floating Button (Unchanged) -->
+    <a href="https://wa.me/919924300356" target="_blank"
+        class="fixed bottom-6 right-6 z-50 p-4 bg-green-500 text-white rounded-full shadow-lg hover:bg-green-600 transition duration-300 transform hover:scale-105">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-message-circle">
+            <path d="M7.9 20A9.3 9.3 0 0 1 4 16.1a9.3 9.3 0 0 1 0-8.2 9.3 9.3 0 0 1 3.9-3.9h.2a9.3 9.3 0 0 1 8.2 0 9.3 9.3 0 0 1 3.9 3.9v.2a9.3 9.3 0 0 1 0 8.2 9.3 9.3 0 0 1-3.9 3.9L12 22l-.1-.1a9.3 9.3 0 0 1-4-1.9Z"/>
+        </svg>
+    </a>
+
+    <!-- Loading Indicator / Status Message (Unchanged) -->
+    <div id="status-message" class="hidden fixed top-0 left-0 w-full p-3 text-center bg-gold-accent text-gray-900 z-[100] font-medium transition duration-300">
+        Loading...
+    </div>
+
+    <!-- MAIN NAVBAR (NEW DESIGN) -->
+    <header class="sticky top-0 z-40 shadow-lg bg-white"> <!-- Removed backdrop-blur for a solid feel -->
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <a href="#/" class="flex items-center space-x-2">
+                <!-- NEW: Updated logo colors -->
+                <span class="text-3xl font-extrabold text-primary-teal tracking-tighter">Success</span>
+                <span class="text-3xl font-extrabold text-gold-accent tracking-tighter">Overseas</span>
+            </a>
+            <div class="hidden lg:flex space-x-8 font-medium">
+                <!-- NEW: Updated link hover color -->
+                <a href="#/" class="text-gray-700 hover:text-primary-teal transition duration-200">Home</a>
+                <a href="#/about" class="text-gray-700 hover:text-primary-teal transition duration-200">About Us</a>
+                <a href="#/services" class="text-gray-700 hover:text-primary-teal transition duration-200">Services</a>
+                <a href="#/countries" class="text-gray-700 hover:text-primary-teal transition duration-200">Destinations</a>
+                <a href="#/testimonials" class="text-gray-700 hover:text-primary-teal transition duration-200">Testimonials</a>
+                <a href="#/contact" class="text-gray-700 hover:text-primary-teal transition duration-200">Contact</a>
+                <!-- NEW: Updated CTA button style -->
+                <a href="#/apply" class="px-4 py-2 rounded-full bg-gold-accent text-gray-900 font-semibold hover:bg-primary-teal hover:text-white transition duration-200 shadow-md transform hover:scale-105">Apply Now</a>
+            </div>
+            <!-- Mobile Menu Button (Unchanged) -->
+            <button id="mobile-menu-btn" class="lg:hidden p-2 rounded-md text-gray-700 hover:bg-gray-100">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+            </button>
+        </nav>
+
+        <!-- Mobile Menu (NEW DESIGN) -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white shadow-xl border-t border-gray-100">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 flex flex-col items-start">
+                <a href="#/" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50 w-full">Home</a>
+                <a href="#/about" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50 w-full">About Us</a>
+                <a href="#/services" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50 w-full">Services</a>
+                <a href="#/countries" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50 w-full">Destinations</a>
+                <a href="#/testimonials" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50 w-full">Testimonials</a>
+                <a href="#/contact" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50 w-full">Contact</a>
+                <a href="#/apply" class="block px-3 py-2 rounded-md text-base font-medium text-gray-900 bg-gold-accent hover:bg-gold-accent/80 w-full mt-2">Apply Now</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT AREA -->
+    <main id="app" class="flex-grow pt-0"></main>
+
+    <!-- FOOTER (NEW DESIGN) -->
+    <footer class="bg-gray-900 text-white mt-auto"> <!-- NEW: Dark neutral footer -->
+        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 border-b border-gray-700 pb-8">
+                <!-- Company Info -->
+                <div>
+                    <h3 class="text-2xl font-extrabold text-gold-accent mb-4">Success Overseas</h3>
+                    <p class="text-sm opacity-80">Your Gateway to Global Education. We empower students to achieve their international study dreams with trust and expert guidance.</p>
+                </div>
+                <!-- Contact Details -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4 border-b border-gold-accent/50 pb-2">Connect</h4>
+                    <ul class="space-y-2 text-sm opacity-80">
+                        <li><span class="font-medium">Address:</span> Old Water Tank, Near Sardar Patel Statue, Vallabh Vidyanagar - 388120, Gujarat, India</li>
+                        <li><span class="font-medium">Phone:</span> +91 99243 00356</li>
+                        <li><span class="font-medium">Email:</span> <a href="mailto:info@successoverseas.com" class="hover:text-gold-accent">info@successoverseas.com</a></li>
+                    </ul>
+                </div>
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4 border-b border-gold-accent/50 pb-2">Quick Links</h4>
+                    <ul class="space-y-2 text-sm opacity-80">
+                        <li><a href="#/services" class="hover:text-gold-accent transition">Our Services</a></li>
+                        <li><a href="#/countries" class="hover:text-gold-accent transition">Study Destinations</a></li>
+                        <li><a href="#/gallery" class="hover:text-gold-accent transition">Success Gallery</a></li>
+                        <li><a href="#/apply" class="hover:text-gold-accent transition">Apply Online</a></li>
+                    </ul>
+                </div>
+                <!-- Map & Social -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4 border-b border-gold-accent/50 pb-2">Locate Us</h4>
+                    <!-- Embedded Google Map Placeholder -->
+                    <div class="w-full h-32 bg-gray-700 rounded-lg overflow-hidden shadow-xl mb-4">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3683.472140417246!2d72.95159307434524!3d22.597984832575773!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e4e201b157403%3A0x8e83b4c194b1220!2sSardar%20Patel%20Statue!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-white hover:text-gold-accent transition"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-facebook"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+                        <a href="#" class="text-white hover:text-gold-accent transition"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-instagram"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg></a>
+                        <a href="#" class="text-white hover:text-gold-accent transition"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-linkedin"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg></a>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-8 text-center text-sm opacity-70">
+                &copy; <span id="year"></span> Success Overseas. All rights reserved. | Crafted with Global Ambition.
+            </div>
+        </div>
+    </footer>
+
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, doc, addDoc, onSnapshot, collection, query, where, getDocs, setDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+        import { setLogLevel } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+        
+        // --- GLOBAL STATE & FIREBASE SETUP ---
+        
+        let app;
+        let db;
+        let auth;
+        let userId = null;
+        let applicationsCollectionRef = null;
+        let testimonialsCollectionRef = null; // For loading testimonials
+        
+        // Firestore security rules require these globals
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {};
+        const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
+
+        /**
+         * Initializes Firebase and authenticates the user.
+         */
+        async function setupAuthAndFirebase() {
+            try {
+                // setLogLevel('Debug'); // Enable for detailed debugging
+                if (Object.keys(firebaseConfig).length === 0) {
+                    console.error("Firebase config is missing. Cannot initialize Firestore.");
+                    return;
+                }
+                
+                app = initializeApp(firebaseConfig);
+                auth = getAuth(app);
+                db = getFirestore(app);
+
+                // Authentication
+                if (initialAuthToken) {
+                    await signInWithCustomToken(auth, initialAuthToken);
+                } else {
+                    await signInAnonymously(auth);
+                }
+
+                // Wait for auth state to be confirmed
+                onAuthStateChanged(auth, (user) => {
+                    if (user) {
+                        userId = user.uid;
+                        console.log("User authenticated. UID:", userId);
+                        // Define collection references based on the authenticated user ID
+                        applicationsCollectionRef = collection(db, `artifacts/${appId}/users/${userId}/applications`);
+                        testimonialsCollectionRef = collection(db, `artifacts/${appId}/public/data/testimonials`);
+                        // Re-render the current page to ensure Firebase data loading is attempted
+                        router(); 
+                    } else {
+                        console.log("No user signed in.");
+                        // Fallback user ID if anonymous sign-in failed (shouldn't happen in canvas)
+                        userId = crypto.randomUUID();
+                    }
+                });
+
+            } catch (error) {
+                console.error("Firebase initialization or authentication failed:", error);
+            }
+        }
+
+        /**
+         * Saves a new application submission to Firestore.
+         * @param {Object} applicationData - The data from the 'Apply Now' form.
+         */
+        async function saveApplication(applicationData) {
+            if (!applicationsCollectionRef) {
+                console.error("Firestore not initialized or user not authenticated.");
+                return { success: false, message: "System error: Firestore not ready." };
+            }
+
+            try {
+                // Add the application data along with a timestamp
+                await addDoc(applicationsCollectionRef, {
+                    ...applicationData,
+                    timestamp: serverTimestamp(),
+                    userId: userId 
+                });
+                return { success: true, message: "Your application has been successfully submitted! Our counselor will contact you soon." };
+            } catch (e) {
+                console.error("Error adding document: ", e);
+                return { success: false, message: "Submission failed. Please try again later." };
+            }
+        }
+
+        // --- UI UTILITIES ---
+
+        /**
+         * Displays a temporary status or error message at the top of the screen.
+         * @param {string} message - The message to display.
+         * @param {string} type - 'success', 'error', or 'info'.
+         */
+        function showStatusMessage(message, type = 'info') {
+            const statusDiv = document.getElementById('status-message');
+            statusDiv.textContent = message;
+            statusDiv.className = 'fixed top-0 left-0 w-full p-3 text-center z-[100] font-medium transition duration-300';
+            
+            switch (type) {
+                case 'success':
+                    statusDiv.classList.add('bg-green-500', 'text-white');
+                    break;
+                case 'error':
+                    statusDiv.classList.add('bg-red-500', 'text-white');
+                    break;
+                case 'info':
+                default:
+                    statusDiv.classList.add('bg-gold-accent', 'text-gray-900');
+                    break;
+            }
+            
+            statusDiv.classList.remove('hidden');
+
+            setTimeout(() => {
+                statusDiv.classList.add('hidden');
+            }, 5000);
+        }
+
+        /**
+         * Sets up the Intersection Observer for scroll-reveal animations.
+         */
+        function setupScrollAnimations() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        // Optional: stop observing once it's visible
+                        // observer.unobserve(entry.target);
+                    } else {
+                        // Optional: remove visible class when scrolling back up
+                        // entry.target.classList.remove('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1, // Start animation when 10% of the element is visible
+                rootMargin: '0px 0px -100px 0px' // Load slightly before reaching bottom
+            });
+
+            document.querySelectorAll('.scroll-reveal').forEach(el => {
+                observer.observe(el);
+            });
+        }
+
+        // --- REUSABLE COMPONENTS ---
+
+        const getFlagIcon = (country) => {
+            const flags = {
+                canada: '🇨🇦', usa: '🇺🇸', uk: '🇬🇧', australia: '🇦🇺', germany: '🇩🇪'
+            };
+            return flags[country.toLowerCase()] || '🌍';
+        };
+
+        const generateSectionHeader = (title, subtitle) => `
+            <div class="max-w-xl mx-auto text-center py-12 scroll-reveal">
+                <!-- NEW: Updated color -->
+                <p class="text-primary-teal font-semibold uppercase tracking-widest text-sm">${subtitle}</p>
+                <h2 class="text-4xl font-extrabold text-gray-900 mt-2">${title}</h2>
+            </div>
+        `;
+
+        const generateCountryCard = (country, description, landmarkImage) => {
+            const flag = getFlagIcon(country);
+            return `
+                <a href="#/${country.toLowerCase()}" class="scroll-reveal block bg-white rounded-xl shadow-xl hover:shadow-2xl transition duration-500 transform hover:-translate-y-1 overflow-hidden group">
+                    <div class="h-48 overflow-hidden">
+                        <img src="${landmarkImage}" alt="${country} Landmark" class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-3">
+                            <!-- NEW: Updated color -->
+                            <h3 class="text-2xl font-bold text-primary-teal">${country} ${flag}</h3>
+                            <span class="text-4xl waving-flag">${flag}</span>
+                        </div>
+                        <p class="text-gray-600 text-sm">${description}</p>
+                        <div class="mt-4 text-gold-accent font-semibold flex items-center">
+                            Explore Now
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right ml-2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                        </div>
+                    </div>
+                </a>
+            `;
+        };
+
+        // --- PAGE RENDER FUNCTIONS ---
+
+        /**
+         * Renders the Home Page content.
+         */
+        const HomePage = () => {
+            const content = document.getElementById('app');
+            content.innerHTML = `
+                <!-- NEW: Hero Section with Photo Background -->
+                <section class="relative h-[80vh] flex items-center justify-center overflow-hidden" style="background-image: url('https://images.unsplash.com/photo-1522204523234-8729aa6e9035?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); background-size: cover; background-position: center;">
+                    <!-- NEW: Updated overlay color -->
+                    <div class="absolute inset-0 bg-primary-teal/70"></div>
+                    
+                    <!-- Animated Airplane SVG (Unchanged) -->
+                    <svg class="absolute w-24 h-24 text-white -translate-x-1/2 -translate-y-1/2 airplane-animation" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M11 19l-9-9 9-9 9 9-9 9z" fill="white" stroke="none"/>
+                        <path d="M2 10s3-4 6-4 6 4 6 4" stroke="white" stroke-dasharray="2 4"/>
+                        <path d="M22 10s-3 4-6 4-6-4-6-4" stroke="white" stroke-dasharray="2 4"/>
+                        <path d="M11 19l-9-9 9-9 9 9-9 9z" fill="none" stroke="currentColor"/>
+                    </svg>
+
+                    <div class="relative z-10 text-center max-w-4xl px-4 scroll-reveal">
+                        <h1 class="text-6xl sm:text-7xl font-extrabold text-white leading-tight" style="font-family: 'Poppins', sans-serif;">
+                            Your <span class="text-gold-accent">Gateway</span> to Global Education
+                        </h1>
+                        <p class="mt-4 text-xl text-white/90">
+                            Success Overseas is your trusted partner for study abroad counseling, visa assistance, and global success.
+                        </p>
+                        <!-- NEW: Updated CTA button styles -->
+                        <div class="mt-8 flex justify-center space-x-4">
+                            <a href="#/countries" class="bg-gold-accent text-gray-900 font-semibold py-3 px-8 rounded-full text-lg hover:bg-white transition duration-300 shadow-lg transform hover:scale-105">
+                                Explore Destinations
+                            </a>
+                            <a href="#/apply" class="bg-white text-primary-teal font-semibold py-3 px-8 rounded-full text-lg hover:bg-gold-accent hover:text-gray-900 transition duration-300 shadow-lg transform hover:scale-105">
+                                Apply Now
+                            </a>
+                        </div>
+                        <!-- Waving Flags (Unchanged) -->
+                        <div class="mt-10 flex justify-center space-x-6">
+                            ${['🇨🇦', '🇺🇸', '🇬🇧', '🇦🇺', '🇩🇪'].map(flag => `<span class="text-4xl waving-flag">${flag}</span>`).join('')}
+                        </div>
+                    </div>
+                </section>
+
+                <!-- About Preview -->
+                <section class="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
+                    ${generateSectionHeader("Who We Are", "TRUSTED PARTNERS")}
+                    <div class="grid md:grid-cols-2 gap-10 items-center">
+                        <div class="scroll-reveal">
+                            <p class="text-lg text-gray-600 mb-4">
+                                Established in Vallabh Vidyanagar, Success Overseas has been dedicated to guiding aspiring students toward their dreams of international education for over a decade. We believe in providing clear, transparent, and personalized counseling to ensure a smooth transition to your new academic life.
+                            </p>
+                            <p class="text-lg text-gray-600 mb-6 font-medium">
+                                From course selection to visa approval, our team of expert counselors maintains a <span class="text-primary-teal font-bold">99% visa success rate</span>, built on meticulous documentation and ethical practices.
+                            </p>
+                            <a href="#/about" class="inline-flex items-center text-primary-teal font-semibold hover:text-gold-accent transition">
+                                Read Our Full Story
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right ml-2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                            </a>
+                        </div>
+                        <div class="scroll-reveal">
+                            <img src="https://placehold.co/600x400/0F766E/FFFFFF?text=Counseling+Office+Image" alt="Success Overseas Office" class="rounded-xl shadow-2xl">
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Key Services Overview -->
+                <section class="bg-white py-16 px-4 sm:px-6 lg:px-8">
+                    ${generateSectionHeader("Our Core Offerings", "HOW WE HELP YOU SUCCEED")}
+                    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+                        ${[
+                            { title: 'Expert Counseling', icon: 'UserCheck', desc: 'Personalized guidance to match your profile with the perfect global university.' },
+                            { title: 'Visa Assistance', icon: 'Stamp', desc: 'Meticulous documentation and preparation for a high visa success rate.' },
+                            { title: 'Test Preparation', icon: 'BookOpen', desc: 'High-quality coaching for IELTS, TOEFL, and PTE from certified trainers.' }
+                        ].map(service => `
+                            <!-- NEW: Updated card style with left border -->
+                            <div class="scroll-reveal p-6 bg-gray-50 rounded-xl shadow-lg border-l-4 border-gold-accent hover:shadow-2xl transition duration-300 transform hover:scale-[1.02]">
+                                <i data-lucide="${service.icon}" class="text-primary-teal w-10 h-10 mb-3"></i>
+                                <h3 class="text-xl font-bold text-gray-900 mb-2">${service.title}</h3>
+                                <p class="text-gray-600">${service.desc}</p>
+                                <a href="#/services" class="mt-3 inline-block text-sm text-gold-accent font-medium hover:text-primary-teal transition">View Details</a>
+                            </div>
+                        `).join('')}
+                    </div>
+                </section>
+
+                <!-- Call to Action Section (NEW DESIGN) -->
+                <section class="bg-primary-teal py-16 px-4 sm:px-6 lg:px-8">
+                    <div class="max-w-4xl mx-auto text-center scroll-reveal">
+                        <h2 class="text-4xl font-extrabold text-white">
+                            Ready to Study Abroad?
+                        </h2>
+                        <p class="mt-4 text-xl text-white/90">
+                            Talk to Our Experts Today and begin your journey to a global future.
+                        </p>
+                        <a href="#/contact" class="mt-8 inline-block bg-gold-accent text-gray-900 font-bold py-3 px-10 rounded-full text-xl hover:bg-white transition duration-300 shadow-xl transform hover:scale-105">
+                            Get Free Consultation
+                        </a>
+                    </div>
+                </section>
+            `;
+            // Trigger icon rendering and animation setup
+            lucide.createIcons();
+            setupScrollAnimations();
+        };
+
+        /**
+         * Renders the About Us Page content.
+         */
+        const AboutPage = () => {
+            const content = document.getElementById('app');
+            content.innerHTML = `
+                <!-- About Hero (NEW DESIGN) -->
+                <section class="relative bg-primary-teal pt-32 pb-16 text-white overflow-hidden">
+                    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 scroll-reveal">
+                        <h1 class="text-5xl font-extrabold text-gold-accent mb-3">Our Story</h1>
+                        <p class="text-xl opacity-90">Guiding and empowering students for global success since our inception.</p>
+                    </div>
+                    <div class="absolute right-0 bottom-0 text-[18rem] opacity-10 font-bold leading-none">SO</div>
+                </section>
+
+                <!-- Who We Are -->
+                <section class="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
+                    ${generateSectionHeader("Who We Are", "A DECADE OF TRUST")}
+                    <div class="grid md:grid-cols-3 gap-10 items-start">
+                        <div class="md:col-span-2 scroll-reveal">
+                            <p class="text-gray-700 mb-4 text-lg">
+                                Success Overseas was founded on the principle of transforming student ambitions into global realities. Located strategically in Vallabh Vidyanagar, the education hub of Gujarat, we have grown into a leading overseas consultancy known for its ethical practices, detailed preparation, and student-first approach.
+                            </p>
+                            <p class="text-gray-700 mb-4 text-lg">
+                                Our team comprises experienced education counselors who have either studied abroad themselves or possess in-depth knowledge of international academic systems, ensuring you receive authentic and actionable advice at every step.
+                            </p>
+                        </div>
+                        <div class="scroll-reveal bg-gray-100 p-6 rounded-xl shadow-lg border-l-4 border-gold-accent">
+                            <h4 class="font-bold text-primary-teal mb-2">Key Stats</h4>
+                            <ul class="space-y-2 text-gray-700">
+                                <li><span class="font-bold text-lg text-gold-accent">99%</span> Visa Success Rate</li>
+                                <li><span class="font-bold text-lg text-gold-accent">10+</span> Years of Service</li>
+                                <li><span class="font-bold text-lg text-gold-accent">5000+</span> Students Guided</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Mission & Vision -->
+                <section class="bg-gray-100 py-16 px-4 sm:px-6 lg:px-8">
+                    <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12">
+                        <div class="scroll-reveal p-6 bg-white rounded-xl shadow-xl border-t-4 border-primary-teal">
+                            <i data-lucide="Target" class="text-primary-teal w-10 h-10 mb-4"></i>
+                            <h3 class="text-3xl font-bold text-gray-900 mb-3">Our Mission</h3>
+                            <p class="text-gray-600">
+                                To guide and empower every student to navigate the complexities of studying abroad with confidence, making their transition to global education seamless, successful, and stress-free.
+                            </p>
+                        </div>
+                        <div class="scroll-reveal p-6 bg-white rounded-xl shadow-xl border-t-4 border-primary-teal">
+                            <i data-lucide="TrendingUp" class="text-primary-teal w-10 h-10 mb-4"></i>
+                            <h3 class="text-3xl font-bold text-gray-900 mb-3">Our Vision</h3>
+                            <p class="text-gray-600">
+                                To be recognized as India’s most trustworthy and student-centric overseas education consultancy, defining success through the achievements of our students worldwide.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Animated Infographic -->
+                <section class="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
+                    ${generateSectionHeader("Your Global Journey", "OUR STEP-BY-STEP PROCESS")}
+                    <div class="relative flex justify-between items-start pt-10 pb-4 md:px-10">
+                        <!-- Horizontal Line Connector -->
+                        <div class="absolute left-10 right-10 top-[4.5rem] h-1 bg-primary-teal/30 hidden sm:block"></div>
+
+                        ${[
+                            { step: 1, title: 'Counseling', icon: 'MessageCircle' },
+                            { step: 2, title: 'Application', icon: 'FileText' },
+                            { step: 3, title: 'Visa', icon: 'Passport' },
+                            { step: 4, title: 'Flight', icon: 'Plane' },
+                            { step: 5, title: 'Study', icon: 'GraduationCap' }
+                        ].map(item => `
+                            <div class="flex flex-col items-center w-1/5 text-center z-10 scroll-reveal">
+                                <div class="w-16 h-16 bg-primary-teal text-white rounded-full flex items-center justify-center mb-3 shadow-lg ring-4 ring-white ring-offset-2">
+                                    <i data-lucide="${item.icon}" class="w-8 h-8"></i>
+                                </div>
+                                <div class="text-sm font-bold text-gold-accent">STEP ${item.step}</div>
+                                <h4 class="text-lg font-semibold text-gray-900 mt-1">${item.title}</h4>
+                            </div>
+                        `).join('')}
+                    </div>
+                </section>
+            `;
+            lucide.createIcons();
+            setupScrollAnimations();
+        };
+
+        /**
+         * Renders the Services Page content.
+         */
+        const ServicesPage = () => {
+            const content = document.getElementById('app');
+
+            const services = [
+                { title: 'Study Abroad Counseling', icon: 'Users', desc: 'Detailed profile analysis and university shortlisting based on your academic and career goals.' },
+                { title: 'Course & University Selection', icon: 'Library', desc: 'We help you choose the best-fit programs and institutions globally, maximizing ROI.' },
+                { title: 'Application & Documentation Support', icon: 'FileCheck', desc: 'Flawless application filing, Statement of Purpose (SOP) guidance, and transcript preparation.' },
+                { title: 'Student Visa Assistance', icon: 'Stamp', desc: 'Step-by-step guidance on visa application, mock interviews, and required financial documentation.' },
+                { title: 'IELTS / TOEFL / PTE Coaching', icon: 'BookOpen', desc: 'Comprehensive coaching by certified experts with structured modules and proven techniques.' },
+                { title: 'Pre-departure Orientation', icon: 'Suitcase', desc: 'Crucial tips on travel, accommodation, culture shock, and settling in your new country.' }
+            ];
+
+            content.innerHTML = `
+                <!-- Services Hero (NEW DESIGN) -->
+                <section class="bg-primary-teal pt-32 pb-16 text-white text-center">
+                    <div class="max-w-7xl mx-auto px-4 scroll-reveal">
+                        <h1 class="text-5xl font-extrabold text-gold-accent mb-3">Our Expert Services</h1>
+                        <p class="text-xl opacity-90">A complete ecosystem to ensure your study abroad journey is successful from start to finish.</p>
+                    </div>
+                </section>
+
+                <!-- Services Grid (NEW DESIGN) -->
+                <section class="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        ${services.map(service => `
+                            <div class="scroll-reveal p-8 bg-white rounded-xl shadow-lg border-b-4 border-gold-accent hover:shadow-2xl transition duration-300 transform hover:-translate-y-1 group">
+                                <i data-lucide="${service.icon}" class="text-primary-teal w-12 h-12 mb-4 group-hover:text-gold-accent transition"></i>
+                                <h3 class="text-2xl font-bold text-gray-900 mb-3">${service.title}</h3>
+                                <p class="text-gray-600 mb-4">${service.desc}</p>
+                                <a href="#/contact" class="text-sm font-semibold text-gold-accent hover:text-primary-teal flex items-center transition">
+                                    Know More
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right ml-2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                                </a>
+                            </div>
+                        `).join('')}
+                    </div>
+                </section>
+
+                <!-- CTA (NEW DESIGN) -->
+                <section class="max-w-4xl mx-auto text-center py-12 px-4 scroll-reveal">
+                    <h2 class="text-3xl font-bold text-gray-900">Ready to Start Your Application?</h2>
+                    <p class="mt-3 text-lg text-gray-600">Our team is ready to guide you through every critical stage of your study abroad application.</p>
+                    <a href="#/apply" class="mt-6 inline-block bg-primary-teal text-white font-bold py-3 px-8 rounded-full text-lg hover:bg-gold-accent hover:text-gray-900 transition duration-300 shadow-xl">
+                        Start Now
+                    </a>
+                </section>
+            `;
+            lucide.createIcons();
+            setupScrollAnimations();
+        };
+
+        /**
+         * Renders the main Countries/Destinations Page content.
+         */
+        const CountriesPage = () => {
+            const content = document.getElementById('app');
+
+            const countries = [
+                { name: 'Canada', desc: 'Known for its quality education and welcoming immigration policies.', image: 'https://placehold.co/400x250/E9E9E9/0F766E?text=Niagara+Falls' },
+                { name: 'USA', desc: 'Home to the world\'s top-ranked universities and cutting-edge research.', image: 'https://placehold.co/400x250/E9E9E9/0F766E?text=Statue+of+Liberty' },
+                { name: 'UK', desc: 'A hub for historic and modern education with one-year Master\'s programs.', image: 'https://placehold.co/400x250/E9E9E9/0F766E?text=Big+Ben' },
+                { name: 'Australia', desc: 'A vibrant destination offering excellent institutions and a high quality of life.', image: 'https://placehold.co/400x250/E9E9E9/0F766E?text=Sydney+Opera+House' },
+                { name: 'Germany', desc: 'Offers highly affordable or free public university education and strong engineering programs.', image: 'https://placehold.co/400x250/E9E9E9/0F766E?text=Brandenburg+Gate' }
+            ];
+
+            content.innerHTML = `
+                <!-- Countries Hero (NEW DESIGN) -->
+                <section class="bg-primary-teal pt-32 pb-16 text-white text-center">
+                    <div class="max-w-7xl mx-auto px-4 scroll-reveal">
+                        <h1 class="text-5xl font-extrabold text-gold-accent mb-3">Choose Your Dream Destination</h1>
+                        <p class="text-xl opacity-90">Explore world-class education options curated by our experts.</p>
+                    </div>
+                </section>
+
+                <!-- Animated Map Placeholder (NEW DESIGN) -->
+                <section class="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
+                    <div class="h-64 bg-gray-200 rounded-xl flex items-center justify-center p-8 relative overflow-hidden shadow-inner scroll-reveal">
+                        <span class="text-gray-500 text-2xl font-semibold">Animated World Map Background & Airplane Trails Placeholder</span>
+                        <div class="absolute inset-0 bg-contain bg-center opacity-10" style="background-image: url('https://placehold.co/1200x600/0F766E/FFFFFF?text=World+Map+Pattern');"></div>
+                        <svg class="absolute w-20 h-20 text-primary-teal -translate-x-1/2 -translate-y-1/2 airplane-animation" style="animation-duration: 25s;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M11 19l-9-9 9-9 9 9-9 9z" fill="white" stroke="none"/>
+                            <path d="M11 19l-9-9 9-9 9 9-9 9z" fill="none" stroke="currentColor"/>
+                        </svg>
+                    </div>
+
+                    <div class="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        ${countries.map(c => generateCountryCard(c.name, c.desc, c.image)).join('')}
+                    </div>
+                </section>
+            `;
+            lucide.createIcons();
+            setupScrollAnimations();
+        };
+
+        /**
+         * Renders the Individual Country Page content.
+         * @param {string} countryName - The name of the country.
+         */
+        const IndividualCountryPage = (countryName) => {
+            const country = countryName.charAt(0).toUpperCase() + countryName.slice(1);
+            const flag = getFlagIcon(countryName);
+
+            // Updated and precise country details
+            const details = {
+                canada: {
+                    landmark: 'https://placehold.co/1200x500/003366/FFFFFF?text=Canadian+Landscape',
+                    education: 'Highly decentralized system known for its focus on practical skills and technology. Home to many top-tier research universities like the University of Toronto and UBC. Excellent polytechnic and college pathways are also available.',
+                    visa: 'The **Student Direct Stream (SDS)** offers fast processing for eligible applicants. Financial proof (Guaranteed Investment Certificate - GIC) is a key requirement for most students.',
+                    cost: 'CAD $15,000 - $35,000 per year.',
+                    benefits: 'The **Post-Graduation Work Permit (PGWP)** allows graduates to stay and work for up to three years, creating a clear pathway to permanent residency.',
+                },
+                usa: {
+                    landmark: 'https://placehold.co/1200x500/0A3161/FFFFFF?text=USA+Skyline',
+                    education: 'Offers the largest selection of universities and courses globally, with specialization and flexibility in majors. Known for world-leading research, especially in STEM fields and Ivy League institutions.',
+                    visa: 'The **F-1 Student Visa** requires proof of acceptance (I-20 Form), demonstrated financial stability, and strong ties to the home country. The visa interview is mandatory.',
+                    cost: 'USD $20,000 - $55,000 per year.',
+                    benefits: 'The **Optional Practical Training (OPT)** program allows F-1 students up to 12 months (or 36 months for STEM graduates) of temporary employment after graduation in a related field.',
+                },
+                uk: {
+                    landmark: 'https://placehold.co/1200x500/400040/FFFFFF?text=London+Street+View',
+                    education: 'World-renowned for historical academic excellence and specialized teaching. UK programs are typically shorter and more intense, with Bachelor\'s degrees in 3 years and Master\'s degrees in 1 year.',
+                    visa: 'The **Student Visa (formerly Tier 4)** operates on a point-based system. It requires a Confirmation of Acceptance for Studies (CAS) from the university and financial evidence covering tuition and living costs.',
+                    cost: 'GBP £12,000 - £25,000 per year.',
+                    benefits: 'The **Graduate Route** offers a generous two-year post-study work visa for all international graduates (three years for PhD graduates), allowing them to look for and take up employment.',
+                },
+                australia: {
+                    landmark: 'https://placehold.co/1200x500/004080/FFFFFF?text=Australian+Beach+View',
+                    education: 'High-quality education with a strong emphasis on international student welfare, practical learning, and industry relevance. Universities are typically located in major metropolitan areas like Sydney, Melbourne, and Brisbane.',
+                    visa: 'The **Subclass 500 Student Visa** is the main category. It requires a Confirmation of Enrolment (CoE) and satisfying the **Genuine Temporary Entrant (GTE)** requirement.',
+                    cost: 'AUD $25,000 - $45,000 per year.',
+                    benefits: 'The **Temporary Graduate visa (Subclass 485)** provides post-study work rights, which vary from 2 to 4 years depending on the study location and qualification level, aiding in residency goals.',
+                },
+                germany: {
+                    landmark: 'https://placehold.co/1200x500/1C1C1C/FFFFFF?text=German+Castle',
+                    education: 'Exceptional engineering and science education, often with mandatory internships. Many public universities charge only a low administrative fee (€100-€350 per semester), making it highly affordable.',
+                    visa: 'The **German Student Visa** requires proof of university admission, health insurance, and proof of funds via a **Blocked Account (Sperrkonto)** containing at least €11,208 for one year of living expenses.',
+                    cost: 'EUR €0 - €1,500 per year (for public institutions).',
+                    benefits: 'Graduates can apply for an **18-month Job Seeker Visa** immediately after completing their studies to find qualified employment.',
+                }
+            }[countryName.toLowerCase()] || {};
+
+            const content = document.getElementById('app');
+            content.innerHTML = `
+                <!-- Country Hero with Parallax (NEW DESIGN) -->
+                <section class="relative h-[60vh] flex items-end overflow-hidden" style="background-image: url('${details.landmark}'); background-size: cover; background-position: center;">
+                    <!-- NEW: Updated overlay color -->
+                    <div class="absolute inset-0 bg-primary-teal/70"></div>
+                    <div class="parallax-bg absolute inset-0 -z-10" style="background-image: url('${details.landmark}'); background-attachment: fixed; background-size: cover; background-position: center;"></div>
+                    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 relative z-10 scroll-reveal">
+                        <h1 class="text-7xl font-extrabold text-white mb-2">${country} ${flag}</h1>
+                        <p class="text-2xl text-gold-accent font-medium">Study in ${country} and build your global career.</p>
+                    </div>
+                </section>
+
+                <!-- Country Details and Sidebar -->
+                <section class="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
+                    <div class="grid lg:grid-cols-3 gap-12">
+                        <!-- Main Content -->
+                        <div class="lg:col-span-2 space-y-12">
+                            ${[
+                                { title: 'Education System Overview', icon: 'Globe', content: details.education },
+                                { title: 'Popular Courses & Universities', icon: 'LayoutGrid', content: 'We offer admissions to hundreds of programs, including Engineering, Computer Science, Business Administration (MBA), Healthcare, and specialized Arts programs. Contact us for our comprehensive university list and scholarship programs.' },
+                                { title: 'Visa Process & Requirements', icon: 'Passport', content: details.visa },
+                                { title: 'Living Costs & Benefits', icon: 'DollarSign', content: `Approximate Annual Tuition: <span class="font-bold">${details.cost}</span>. Key benefit: ${details.benefits}` }
+                            ].map(item => `
+                                <div class="scroll-reveal p-6 bg-white rounded-xl shadow-lg border-l-4 border-gold-accent">
+                                    <h2 class="text-3xl font-bold text-primary-teal flex items-center mb-4">
+                                        <i data-lucide="${item.icon}" class="w-8 h-8 mr-3 text-gold-accent"></i>
+                                        ${item.title}
+                                    </h2>
+                                    <p class="text-gray-700 text-lg">${item.content}</p>
+                                </div>
+                            `).join('')}
+                        </div>
+
+                        <!-- Sidebar Quick Contact Form (NEW DESIGN) -->
+                        <div class="lg:col-span-1">
+                            <div class="sticky top-28 scroll-reveal bg-primary-teal p-8 rounded-xl shadow-2xl text-white">
+                                <h3 class="text-2xl font-bold text-gold-accent mb-4 text-center">Apply for ${country} Now</h3>
+                                <form id="quick-contact-form" class="space-y-4">
+                                    <input type="hidden" name="preferredCountry" value="${country}">
+                                    <input type="text" name="fullName" placeholder="Your Full Name" required class="w-full p-3 rounded-md bg-white text-gray-800 focus:ring-2 focus:ring-gold-accent border-none">
+                                    <input type="email" name="email" placeholder="Email Address" required class="w-full p-3 rounded-md bg-white text-gray-800 focus:ring-2 focus:ring-gold-accent border-none">
+                                    <input type="tel" name="mobile" placeholder="Mobile Number" required class="w-full p-3 rounded-md bg-white text-gray-800 focus:ring-2 focus:ring-gold-accent border-none">
+                                    <textarea name="message" placeholder="Quick Message / Course Interest" rows="3" class="w-full p-3 rounded-md bg-white text-gray-800 focus:ring-2 focus:ring-gold-accent border-none"></textarea>
+                                    <button type="submit" class="w-full bg-gold-accent text-gray-900 font-bold py-3 rounded-md hover:bg-white transition duration-300 transform hover:scale-[1.02]">
+                                        Send Inquiry
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            `;
+            lucide.createIcons();
+            setupScrollAnimations();
+
+            // Form submission logic for Quick Contact
+            document.getElementById('quick-contact-form').addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const form = e.target;
+                const data = {
+                    fullName: form.fullName.value,
+                    email: form.email.value,
+                    mobile: form.mobile.value,
+                    preferredCountry: form.preferredCountry.value,
+                    courseOfInterest: "Not specified",
+                    message: form.message.value,
+                    type: "Quick Contact"
+                };
+
+                const result = await saveApplication(data);
+                showStatusMessage(result.message, result.success ? 'success' : 'error');
+
+                if (result.success) {
+                    form.reset();
+                    document.querySelector('#quick-contact-form button[type="submit"]').textContent = 'Inquiry Sent!';
+                    setTimeout(() => {
+                        document.querySelector('#quick-contact-form button[type="submit"]').textContent = 'Send Inquiry';
+                    }, 3000);
+                }
+            });
+        };
+        
+        /**
+         * Renders the Testimonials Page content.
+         */
+        const TestimonialsPage = () => {
+            const content = document.getElementById('app');
+            content.innerHTML = `
+                <!-- Testimonials Hero (NEW DESIGN) -->
+                <section class="bg-primary-teal pt-32 pb-16 text-white text-center">
+                    <div class="max-w-7xl mx-auto px-4 scroll-reveal">
+                        <h1 class="text-5xl font-extrabold text-gold-accent mb-3">Student Success Stories</h1>
+                        <p class="text-xl opacity-90">Hear directly from the students who achieved their dreams with us.</p>
+                    </div>
+                </section>
+
+                <!-- Testimonials Grid/Slider (Static Mockup) -->
+                <section class="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        ${[
+                            { name: 'Kishan Patel', flag: '🇨🇦', uni: 'University of Waterloo', feedback: 'The visa assistance was flawless. Success Overseas made my dream of studying in Canada a reality. Highly recommended for their transparency and support.', rating: 5, photo: 'https://placehold.co/100x100/0F766E/FFFFFF?text=KP' },
+                            { name: 'Jinal Shah', flag: '🇬🇧', uni: 'King\'s College London', feedback: 'My IELTS coaching was excellent. I achieved a band 8.0, and the application support ensured I secured admission to my dream UK university.', rating: 5, photo: 'https://placehold.co/100x100/FBBF24/0F766E?text=JS' },
+                            { name: 'Aman Sharma', flag: '🇺🇸', uni: 'MIT', feedback: 'Complex US application documentation was handled professionally. Their pre-departure orientation gave me confidence to start my new life.', rating: 4, photo: 'https://placehold.co/100x100/0F766E/FFFFFF?text=AS' },
+                            { name: 'Priya Verma', flag: '🇦🇺', uni: 'University of Sydney', feedback: 'The team guided me through the entire process, from course selection to visa approval for Australia. Fantastic service!', rating: 5, photo: 'https://placehold.co/100x100/FBBF24/0F766E?text=PV' }
+                        ].map(testimonial => `
+                            <div class="scroll-reveal p-6 bg-white rounded-xl shadow-lg flex flex-col items-start hover:shadow-2xl transition duration-300">
+                                <div class="flex items-center mb-4 w-full justify-between">
+                                    <img src="${testimonial.photo}" alt="${testimonial.name}" class="w-16 h-16 rounded-full object-cover border-4 border-gold-accent">
+                                    <span class="text-4xl waving-flag">${testimonial.flag}</span>
+                                </div>
+                                <div class="flex text-gold-accent mb-2">
+                                    ${Array(testimonial.rating).fill('<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="none" class="lucide lucide-star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>').join('')}
+                                </div>
+                                <p class="text-gray-700 italic mb-4">"${testimonial.feedback}"</p>
+                                <div class="border-t pt-3 w-full">
+                                    <p class="font-bold text-primary-teal">${testimonial.name}</p>
+                                    <p class="text-sm text-gray-500">${testimonial.uni}</p>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </section>
+                
+                <!-- Call for New Testimonial -->
+                <section class="bg-gray-100 py-12 px-4 text-center">
+                    <p class="text-lg text-gray-700">Have a success story to share? <a href="#/contact" class="text-primary-teal font-semibold hover:text-gold-accent transition">Contact us</a>!</p>
+                </section>
+            `;
+            lucide.createIcons();
+            setupScrollAnimations();
+            
+            // Note: In a production app, we would use onSnapshot(testimonialsCollectionRef, (snapshot) => { ... }) here.
+            // For this implementation, we use static data above.
+        };
+
+        /**
+         * Renders the Gallery Page content.
+         */
+        const GalleryPage = () => {
+            const content = document.getElementById('app');
+
+            const images = [
+                'https://placehold.co/400x300/FBBF24/0F766E?text=Visa+Approval+1',
+                'https://placehold.co/400x600/0F766E/FFFFFF?text=Seminar+Event',
+                'https://placehold.co/600x400/0F766E/FFFFFF?text=Successful+Student+1',
+                'https://placehold.co/400x300/FBBF24/0F766E?text=Counseling+Moment',
+                'https://placehold.co/600x300/0F766E/FFFFFF?text=Pre-departure+Talk',
+                'https://placehold.co/400x400/FBBF24/0F766E?text=Visa+Approval+2',
+                'https://placehold.co/300x400/0F766E/FFFFFF?text=Successful+Student+2',
+                'https://placehold.co/500x300/FBBF24/0F766E?text=Office+Interior'
+            ];
+
+            content.innerHTML = `
+                <!-- Gallery Hero (NEW DESIGN) -->
+                <section class="bg-primary-teal pt-32 pb-16 text-white text-center">
+                    <div class="max-w-7xl mx-auto px-4 scroll-reveal">
+                        <h1 class="text-5xl font-extrabold text-gold-accent mb-3">Our Success Gallery</h1>
+                        <p class="text-xl opacity-90">Visualizing the moments of achievement and guidance.</p>
+                    </div>
+                </section>
+
+                <!-- Masonry Grid -->
+                <section class="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
+                    <div class="columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6">
+                        ${images.map(src => `
+                            <div class="break-inside-avoid scroll-reveal">
+                                <img src="${src}" alt="Gallery image" class="w-full rounded-xl shadow-lg hover:shadow-2xl hover:opacity-90 transition duration-300 cursor-pointer object-cover">
+                            </div>
+                        `).join('')}
+                    </div>
+                </section>
+            `;
+            setupScrollAnimations();
+        };
+
+        /**
+         * Renders the Contact Us Page content.
+         */
+        const ContactPage = () => {
+            const content = document.getElementById('app');
+            content.innerHTML = `
+                <!-- Contact Hero (NEW DESIGN) -->
+                <section class="bg-primary-teal pt-32 pb-16 text-white text-center">
+                    <div class="max-w-7xl mx-auto px-4 scroll-reveal">
+                        <h1 class="text-5xl font-extrabold text-gold-accent mb-3">Let’s Connect and Build Your Global Future</h1>
+                        <p class="text-xl opacity-90">Visit us or send us a message — we're here to start your journey.</p>
+                    </div>
+                </section>
+
+                <!-- Contact Details & Form -->
+                <section class="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
+                    <div class="grid lg:grid-cols-3 gap-12">
+                        <!-- Contact Info -->
+                        <div class="lg:col-span-1 space-y-8">
+                            <div class="scroll-reveal p-6 bg-white rounded-xl shadow-lg border-l-4 border-gold-accent">
+                                <h3 class="text-xl font-bold text-primary-teal mb-2 flex items-center"><i data-lucide="MapPin" class="w-5 h-5 mr-2"></i> Our Office</h3>
+                                <p class="text-gray-700">Old Water Tank, Near Sardar Patel Statue, Vallabh Vidyanagar - 388120, Gujarat, India</p>
+                            </div>
+                            <div class="scroll-reveal p-6 bg-white rounded-xl shadow-lg border-l-4 border-gold-accent">
+                                <h3 class="text-xl font-bold text-primary-teal mb-2 flex items-center"><i data-lucide="Phone" class="w-5 h-5 mr-2"></i> Contact Numbers</h3>
+                                <p class="text-gray-700">+91 99243 00356</p>
+                                <p class="text-gray-700">+91 99243 00357</p>
+                                <p class="text-gray-700">+91 99243 00358</p>
+                            </div>
+                            <div class="scroll-reveal p-6 bg-white rounded-xl shadow-lg border-l-4 border-gold-accent">
+                                <h3 class="text-xl font-bold text-primary-teal mb-2 flex items-center"><i data-lucide="Mail" class="w-5 h-5 mr-2"></i> Email Us</h3>
+                                <p class="text-gray-700">info@successoverseas.com</p>
+                            </div>
+                        </div>
+
+                        <!-- Contact Form (NEW DESIGN) -->
+                        <div class="lg:col-span-2 scroll-reveal p-8 bg-gray-50 rounded-xl shadow-2xl">
+                            <h2 class="text-3xl font-bold text-primary-teal mb-6">Send Us a Message</h2>
+                            <form id="contact-form" class="space-y-6">
+                                <div class="grid sm:grid-cols-2 gap-4">
+                                    <input type="text" name="fullName" placeholder="Full Name" required class="w-full p-4 rounded-lg border border-gray-300 focus:border-primary-teal focus:ring-1 focus:ring-primary-teal">
+                                    <input type="email" name="email" placeholder="Email Address" required class="w-full p-4 rounded-lg border border-gray-300 focus:border-primary-teal focus:ring-1 focus:ring-primary-teal">
+                                </div>
+                                <input type="tel" name="mobile" placeholder="Mobile Number" required class="w-full p-4 rounded-lg border border-gray-300 focus:border-primary-teal focus:ring-1 focus:ring-primary-teal">
+                                <textarea name="message" placeholder="Your Message or Inquiry" rows="5" required class="w-full p-4 rounded-lg border border-gray-300 focus:border-primary-teal focus:ring-1 focus:ring-primary-teal"></textarea>
+                                <button type="submit" class="w-full bg-primary-teal text-white font-bold py-4 rounded-lg hover:bg-gold-accent hover:text-gray-900 transition duration-300 shadow-lg transform hover:scale-[1.01]">
+                                    Submit Message
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </section>
+            `;
+            lucide.createIcons();
+            setupScrollAnimations();
+
+            // Form submission logic for Contact Us
+            document.getElementById('contact-form').addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const form = e.target;
+                const data = {
+                    fullName: form.fullName.value,
+                    email: form.email.value,
+                    mobile: form.mobile.value,
+                    preferredCountry: "Not specified (Contact Form)",
+                    courseOfInterest: "Not specified",
+                    message: form.message.value,
+                    type: "Contact Form Inquiry"
+                };
+
+                const result = await saveApplication(data);
+                showStatusMessage(result.message, result.success ? 'success' : 'error');
+
+                if (result.success) {
+                    form.reset();
+                    document.querySelector('#contact-form button[type="submit"]').textContent = 'Message Sent!';
+                    setTimeout(() => {
+                        document.querySelector('#contact-form button[type="submit"]').textContent = 'Submit Message';
+                    }, 3000);
+                }
+            });
+        };
+
+        /**
+         * Renders the Apply Now Page content.
+         */
+        const ApplyPage = () => {
+            const content = document.getElementById('app');
+            content.innerHTML = `
+                <!-- Apply Now Hero (NEW DESIGN) -->
+                <section id="apply-page-bg" class="relative pt-32 pb-24 text-white overflow-hidden">
+                    <div class="absolute inset-0 bg-black/30"></div>
+                    <div class="relative z-10 text-center max-w-4xl mx-auto px-4 scroll-reveal">
+                        <h1 class="text-5xl font-extrabold text-gold-accent mb-3">Begin Your Global Application</h1>
+                        <p class="text-xl opacity-90">Fill out this simple form to get started, and our expert counselor will reach out to you within 24 hours.</p>
+                        <svg class="absolute w-20 h-20 text-white -translate-x-1/2 -translate-y-1/2 airplane-animation" style="top: -50px; left: 0; animation-duration: 10s;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M11 19l-9-9 9-9 9 9-9 9z" fill="white" stroke="none"/>
+                            <path d="M11 19l-9-9 9-9 9 9-9 9z" fill="none" stroke="currentColor"/>
+                        </svg>
+                    </div>
+                </section>
+
+                <!-- Application Form (NEW DESIGN) -->
+                <section class="max-w-3xl mx-auto -mt-16 relative z-20 py-16 px-4 sm:px-6 lg:px-8">
+                    <div class="bg-white p-8 sm:p-10 rounded-xl shadow-2xl border-t-8 border-gold-accent scroll-reveal">
+                        <h2 class="text-3xl font-bold text-primary-teal mb-6">Application Details</h2>
+                        <form id="apply-now-form" class="space-y-6">
+                            <input type="text" name="fullName" placeholder="Full Name (as per Passport)" required class="w-full p-4 rounded-lg border border-gray-300 focus:border-primary-teal focus:ring-1 focus:ring-primary-teal">
+                            <input type="email" name="email" placeholder="Email Address" required class="w-full p-4 rounded-lg border border-gray-300 focus:border-primary-teal focus:ring-1 focus:ring-primary-teal">
+                            <input type="tel" name="mobile" placeholder="Mobile Number" required class="w-full p-4 rounded-lg border border-gray-300 focus:border-primary-teal focus:ring-1 focus:ring-primary-teal">
+
+                            <select name="preferredCountry" required class="w-full p-4 rounded-lg border border-gray-300 bg-white focus:border-primary-teal focus:ring-1 focus:ring-primary-teal">
+                                <option value="" disabled selected>Preferred Destination Country</option>
+                                <option value="Canada">Canada 🇨🇦</option>
+                                <option value="USA">USA 🇺🇸</option>
+                                <option value="UK">UK 🇬🇧</option>
+                                <option value="Australia">Australia 🇦🇺</option>
+                                <option value="Germany">Germany 🇩🇪</option>
+                                <option value="Other">Other</option>
+                            </select>
+
+                            <input type="text" name="courseOfInterest" placeholder="Course of Interest (e.g., MBA, B.Tech CS, Nursing)" required class="w-full p-4 rounded-lg border border-gray-300 focus:border-primary-teal focus:ring-1 focus:ring-primary-teal">
+                            <textarea name="message" placeholder="Optional: Tell us about your academic background or specific queries." rows="4" class="w-full p-4 rounded-lg border border-gray-300 focus:border-primary-teal focus:ring-1 focus:ring-primary-teal"></textarea>
+                            
+                            <button type="submit" class="w-full bg-primary-teal text-white font-bold py-4 rounded-lg hover:bg-gold-accent hover:text-gray-900 transition duration-300 shadow-xl transform hover:scale-[1.01]">
+                                Submit Application & Get a Call Back
+                            </button>
+                        </form>
+                    </div>
+                </section>
+            `;
+            lucide.createIcons();
+            setupScrollAnimations();
+
+            // Form submission logic for Apply Now
+            document.getElementById('apply-now-form').addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const form = e.target;
+                const data = {
+                    fullName: form.fullName.value,
+                    email: form.email.value,
+                    mobile: form.mobile.value,
+                    preferredCountry: form.preferredCountry.value,
+                    courseOfInterest: form.courseOfInterest.value,
+                    message: form.message.value,
+                    type: "Full Application"
+                };
+
+                const result = await saveApplication(data);
+                showStatusMessage(result.message, result.success ? 'success' : 'error');
+
+                if (result.success) {
+                    form.reset();
+                    document.querySelector('#apply-now-form button[type="submit"]').textContent = 'Application Submitted!';
+                    setTimeout(() => {
+                        document.querySelector('#apply-now-form button[type="submit"]').textContent = 'Submit Application & Get a Call Back';
+                    }, 3000);
+                }
+            });
+        };
+
+
+        // --- ROUTING LOGIC ---
+
+        const routes = {
+            '/': HomePage,
+            '/about': AboutPage,
+            '/services': ServicesPage,
+            '/countries': CountriesPage,
+            '/testimonials': TestimonialsPage,
+            '/gallery': GalleryPage,
+            '/contact': ContactPage,
+            '/apply': ApplyPage,
+            '/canada': () => IndividualCountryPage('Canada'),
+            '/usa': () => IndividualCountryPage('USA'),
+            '/uk': () => IndividualCountryPage('UK'),
+            '/australia': () => IndividualCountryPage('Australia'),
+            '/germany': () => IndividualCountryPage('Germany'),
+        };
+
+        /**
+         * Core routing function to render pages based on hash.
+         */
+        const router = () => {
+            let path = window.location.hash.slice(1) || '/';
+            // Clean path for dynamic country pages
+            if (path.startsWith('/')) path = path.toLowerCase(); 
+
+            const page = routes[path];
+
+            if (page) {
+                document.getElementById('app').innerHTML = ''; // Clear content
+                page();
+                window.scrollTo(0, 0); // Scroll to top on page change
+            } else {
+                // 404 Not Found Page
+                document.getElementById('app').innerHTML = `
+                    <div class="min-h-[50vh] flex flex-col items-center justify-center text-center p-8 bg-gray-50">
+                        <h1 class="text-7xl font-extrabold text-primary-teal">404</h1>
+                        <p class="text-2xl font-semibold text-gray-700 mt-4">Page Not Found</p>
+                        <p class="text-gray-500 mt-2">The global destination you were looking for doesn't exist.</p>
+                        <a href="#/" class="mt-6 inline-block bg-gold-accent text-gray-900 font-bold py-3 px-8 rounded-full hover:bg-primary-teal hover:text-white transition">Go Home</a>
+                    </div>
+                `;
+            }
+        };
+
+        // --- INITIALIZATION ---
+
+        // Listen for hash changes to trigger routing
+        window.addEventListener('hashchange', router);
+
+        // Mobile menu toggle logic
+        document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Initialize on page load
+        window.onload = function () {
+            // Set current year in footer
+            document.getElementById('year').textContent = new Date().getFullYear();
+            
+            // Setup Firebase and Auth first
+            setupAuthAndFirebase();
+            
+            // Route to the correct page immediately
+            router();
+            
+            // Re-run router if userId is null, to ensure data is loaded after auth is ready
+            // (The onAuthStateChanged listener handles the second call)
+        };
+    </script>
+</body>
+</html>
